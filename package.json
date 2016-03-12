@@ -1,0 +1,19 @@
+{
+  "name": "liam",
+  "version": "1.0.0",
+  "description": "<3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ulicawa",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.13.3"
+  },
+  "dependencies": {
+    "cron": "^1.0.9",
+    "dateformat": "^1.0.12",
+    "superagent": "^1.4.0"
+  }
+}
