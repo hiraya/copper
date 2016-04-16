@@ -18,7 +18,7 @@ function getImg () {
        .query({ access_token: settings.API_KEY })
        .end(function(err, res){
             if(res && res.body&& res.body.data) {
-                var crrImg = res.body.data[0].images.standard_resolution.url,
+                var crrImg = res.body.data[0].images.standard_resolution.url.replace('/s640x640','').replace('/sh0.08','').replace('/e35','').split('?')[0],
                     usrImg = res.body.data[0].user.profile_picture.replace('/s150x150', ''),
                     caption = res.body.data[0].caption ? res.body.data[0].caption.text : '';
                     time = res.body.data[0].created_time;
@@ -26,7 +26,7 @@ function getImg () {
 
                 if(crrImg !== prevImg){
                     request.get(crrImg).end(function (err, res) {
-                        fs.writeFile('./images/'+crrImg.split('/').pop().split('?')[0], res.body, 'binary', function(err){
+                        fs.writeFile('./images/'+crrImg.split('/').pop(), res.body, 'binary', function(err){
                             if (err) console.log(err);
                             console.log('File saved@'+timeStamp);
                             console.log(crrImg);
